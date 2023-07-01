@@ -19,23 +19,23 @@ while True:
             value = df.iloc[0, 2]
             if value == 'открой':
                 open_link(df.iloc[0, 3])
-                stt_funk('Открываю вашу ссылку')
+                tts_func('Открываю вашу ссылку')
 
             elif value == 'узнать дату':
-                stt_funk(date_now())
+                tts_func(date_now())
 
             elif value == 'узнать время':
-                stt_funk(time_now())
+                tts_func(time_now())
 
             elif value == 'перезагрузка':
-                stt_funk(restart_system())
+                tts_func(restart_system())
 
             elif value == 'отмена перезагрузки или выключения':
-                stt_funk(restart_cancellation())
+                tts_func(restart_cancellation())
 
             elif value == 'выключение устройства':
-                stt_funk(shutdown())
+                tts_func(shutdown())
 
             elif value == 'запуск приложения':
-                stt_funk(start_app())
+                tts_func(start_app())
 
