@@ -16,4 +16,26 @@ while True:
         if df.empty:
             tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или идите нах')
         else:
-            pass
+            value = df.iloc[0, 2]
+            if value == 'открой':
+                open_link(df.iloc[0, 3])
+                stt_funk('Открываю вашу ссылку')
+
+            elif value == 'узнать дату':
+                stt_funk(date_now())
+
+            elif value == 'узнать время':
+                stt_funk(time_now())
+
+            elif value == 'перезагрузка':
+                stt_funk(restart_system())
+
+            elif value == 'отмена перезагрузки или выключения':
+                stt_funk(restart_cancellation())
+
+            elif value == 'выключение устройства':
+                stt_funk(shutdown())
+
+            elif value == 'запуск приложения':
+                stt_funk(start_app())
+
