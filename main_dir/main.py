@@ -14,7 +14,7 @@ while True:
         df = pd.read_sql_query(query, connection)
         connection.close()
         if df.empty:
-            tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или идите нах')
+            tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или не вносите, мне всё равно')
         else:
             value = df.iloc[0, 2]
             if value == 'открыть':

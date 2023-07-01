@@ -84,6 +84,5 @@ def edit_command_in_DB(id, user_title, tech_title, link):
     df.to_sql('commands_table', connection, if_exists='replace', index=False)
     connection.close()
 
-
-append_command_in_DB('включи игры', 'запуск приложения', 'Steam')
+# append_command_in_DB('показать время', 'узнать время', 'None')
 chek_DB()
