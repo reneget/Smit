@@ -67,19 +67,23 @@ def append_command_in_DB(user_title, tech_title, link):
 
 
 def edit_command_in_DB(id, user_title, tech_title, link):
+
     connection = sqlite3.connect('commands_database.db')
-
-    # Чтение данных из таблицы SQLite в DataFrame
-    query = f"SELECT * FROM commands_table WHERE id = {id}"  # Предположим, что вы хотите отредактировать строку с id = 1
+    query = f"SELECT * FROM commands_table"
     df = pd.read_sql_query(query, connection)
-
+    row = id
     # Внесите изменения в DataFrame
-    df.loc[0, 'user_title'] = user_title
-    df.loc[0, 'tech_title'] = tech_title
-    df.loc[0, 'link'] = link
+    if user_title != None:
+        df.at[row, 'user_title'] = user_title
+    if tech_title != None:
+        df.at[row, 'tech_title'] = tech_title
+    if link != None:
+        df.at[row, 'link'] = link
 
     # Запись измененных данных обратно в таблицу SQLite
     df.to_sql('commands_table', connection, if_exists='replace', index=False)
-
-    # Закрытие соединения
     connection.close()
+
+
+append_command_in_DB('включи игры', 'запуск приложения', 'Steam')
+chek_DB()

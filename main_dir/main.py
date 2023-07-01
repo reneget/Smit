@@ -17,7 +17,7 @@ while True:
             tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или идите нах')
         else:
             value = df.iloc[0, 2]
-            if value == 'открой':
+            if value == 'открыть':
                 open_link(df.iloc[0, 3])
                 tts_func('Открываю вашу ссылку')
 
@@ -37,5 +37,5 @@ while True:
                 tts_func(shutdown())
 
             elif value == 'запуск приложения':
-                tts_func(start_app())
+                tts_func(start_app(df.iloc[0, 3]))
 
