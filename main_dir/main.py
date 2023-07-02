@@ -4,13 +4,13 @@ from commands import *
 from time import sleep as wait
 import pandas as pd
 import sqlite3
-from SQLite import connection
 
 while True:
     text = stt_funk()
     if 'скай' in text:
         tts_func('Слушаю вас')
         command_text = stt_funk()
+        connection = sqlite3.connect('commands_database.db')
         query = f"SELECT * FROM commands_table WHERE user_title = '{command_text}'"
         df = pd.read_sql_query(query, connection)
         if df.empty:
