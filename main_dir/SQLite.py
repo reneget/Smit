@@ -2,10 +2,10 @@ import sqlite3
 import csv
 import pandas as pd
 
-
-def create_DB():
+connection = sqlite3.connect('commands_database.db')
+def create_DB(connection):
     # Установка соединения с базой данных SQLite
-    conn = sqlite3.connect('commands_database.db')
+    conn = connection
 
     # Создание курсора для выполнения операций с базой данных
     cursor = conn.cursor()
@@ -24,12 +24,11 @@ def create_DB():
 
     # Сохранение изменений и закрытие соединения
     conn.commit()
-    conn.close()
 
 
-def chek_DB():
+def chek_DB(connection):
     # Установка соединения с базой данных SQLite
-    conn = sqlite3.connect('commands_database.db')
+    conn = connection
 
     # Создание курсора для выполнения операций с базой данных
     cursor = conn.cursor()
@@ -44,12 +43,8 @@ def chek_DB():
         csv_writer.writerow([i[0] for i in cursor.description])  # Запись заголовков столбцов
         csv_writer.writerows(cursor)
 
-    # Закрытие соединения
-    conn.close()
 
-
-def append_command_in_DB(user_title, tech_title, link):
-    connection = sqlite3.connect('commands_database.db')
+def append_command_in_DB(connection, user_title, tech_title, link):
 
     # Создание DataFrame с новой строкой
     new_data = {
@@ -61,28 +56,26 @@ def append_command_in_DB(user_title, tech_title, link):
 
     # Запись DataFrame в базу данных SQLite
     df.to_sql('commands_table', connection, if_exists='append', index=False)
-
-    # Закрытие соединения
-    connection.close()
+    connection.commit()
 
 
-def edit_command_in_DB(id, user_title, tech_title, link):
+def edit_command_in_DB(connection, id, user_title, tech_title, link):
+    cursor = connection.cursor()
+    if user_title != 'None':
+        cursor.execute(f"UPDATE commands_table SET 'user_title' = '{user_title}' WHERE id = {id}")
+    if tech_title != 'None':
+        cursor.execute(f"UPDATE commands_table SET 'tech_title' = '{tech_title}' WHERE id = {id}")
+    if link != 'None':
+        cursor.execute(f"UPDATE commands_table SET 'link' = '{link}' WHERE id = {id}")
+    connection.commit()
 
-    connection = sqlite3.connect('commands_database.db')
-    query = f"SELECT * FROM commands_table"
-    df = pd.read_sql_query(query, connection)
-    row = id
-    # Внесите изменения в DataFrame
-    if user_title != None:
-        df.at[row, 'user_title'] = user_title
-    if tech_title != None:
-        df.at[row, 'tech_title'] = tech_title
-    if link != None:
-        df.at[row, 'link'] = link
 
-    # Запись измененных данных обратно в таблицу SQLite
-    df.to_sql('commands_table', connection, if_exists='replace', index=False)
-    connection.close()
+def delet_in_DB(connection, id):
+    cursor = connection.cursor()
+    cursor.execute(f"DELETE FROM commands_table WHERE id = {id}")
+    connection.commit()
 
-# append_command_in_DB('показать время', 'узнать время', 'None')
-chek_DB()
+
+# delet_in_DB()
+# edit_command_in_DB()
+chek_DB(connection)
