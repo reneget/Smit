@@ -39,3 +39,4 @@ while True:
             elif value == 'запуск приложения':
                 tts_func(start_app(df.iloc[0, 3]))
 
+    connection.close()
