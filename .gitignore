@@ -1,6 +1,6 @@
 .idea/
 vosk-model-ru-0.42/
 vosk-model-small-ru-0.22/
-commands_database.db/
-mydata.csv/
-chatGPT_test.py/
+commands_database.db
+mydata.csv
+chatGPT_test.py
