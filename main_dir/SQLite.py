@@ -75,7 +75,7 @@ def delet_in_DB(connection, id):
     cursor.execute(f"DELETE FROM commands_table WHERE id = {id}")
     connection.commit()
 
-
-# delet_in_DB()
+# create_DB(connection)
+# delet_in_DB(connection, 9)
 # edit_command_in_DB()
 chek_DB(connection)

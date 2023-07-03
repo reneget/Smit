@@ -13,7 +13,6 @@ def open_link(link):
 
 def date_now():
     pendulum.set_locale('ru')
-    # print(pendulum..diff_for_humans())
     date = str(datetime.date.today()).split('-')
     print(date)
     dt = pendulum.datetime(int(date[0]), int(date[1]), int(date[2]))
@@ -27,7 +26,7 @@ def time_now():
     return f"{hours} {minutes}"
 
 
-def restart_system():  # перезагрузка компьютера через 5 сек
+def restart_system():  # перезагрузка компьютера через 30 сек
     os.system(" shutdown /r /t 30 ")
     return 'компьютер будет перезапущен через тридцать секунд'
 

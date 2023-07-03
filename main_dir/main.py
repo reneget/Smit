@@ -1,7 +1,6 @@
 from tts import tts_func
 from stt import stt_funk
 from commands import *
-from time import sleep as wait
 import pandas as pd
 import sqlite3
 
