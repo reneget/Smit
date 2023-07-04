@@ -2,16 +2,15 @@ from tts import tts_func
 from stt import stt_funk
 from commands import *
 import pandas as pd
-import sqlite3
+from CSV import *
 
 while True:
     text = stt_funk()
-    if 'скай' in text:
+    if 'смит' in text:
         tts_func('Слушаю вас')
         command_text = stt_funk()
-        connection = sqlite3.connect('commands_database.db')
-        query = f"SELECT * FROM commands_table WHERE user_title = '{command_text}'"
-        df = pd.read_sql_query(query, connection)
+        df = pd.read_csv('commands_data.csv')
+        df = df[df['user_title'] == command_text]
         if df.empty:
             tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или не вносите, мне всё равно')
         else:
@@ -37,5 +36,3 @@ while True:
 
             elif value == 'запуск приложения':
                 tts_func(start_app(df.iloc[0, 3]))
-
-    connection.close()
