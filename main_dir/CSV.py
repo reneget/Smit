@@ -61,16 +61,14 @@ def edit_command(id, user_title=None, tech_title=None, link=None):
         df.to_csv(csv_file, index=False)
 
 
-def delete_command(id):
+def delete_command(index):
     # Чтение существующего CSV-файла в DataFrame
     df = pd.read_csv(csv_file)
 
-    # Фильтрация строки с соответствующим ID
-    df = df[df['id'] != id]
+    # Удаление строки по индексу
+    df = df.drop(index - 1)
 
-    df = df.reset_index(drop=True)
-    df['id'] = df.index + 1
-    # Сохранение DataFrame в CSV-файл
+    # Перезапись изменений в CSV файл
     df.to_csv(csv_file, index=False)
 
 
