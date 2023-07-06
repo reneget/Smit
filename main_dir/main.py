@@ -2,7 +2,6 @@ from tts import tts_func
 from stt import stt_funk
 from commands import *
 from CSV import *
-
 while True:
     text = stt_funk()
     if 'смит' in text:
@@ -35,3 +34,6 @@ while True:
 
             elif value == 'запуск приложения':
                 tts_func(start_app(df.iloc[0, 3]))
+
+            elif value == 'создай папку':
+                tts_func(folder())
