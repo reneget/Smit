@@ -10,7 +10,7 @@ while True:
         df = pd.read_csv('commands_data.csv')
         df = df[df['user_title'] == command_text]
         if df.empty:
-            tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или не вносите, мне всё равно')
+            tts_func(f'Вы сказали, {command_text}, но в моём списке комманд такой нет. Внесите её сами или не вноситеЫ, мне всё равно')
         else:
             value = df.iloc[0, 2]
             if value == 'открыть':
