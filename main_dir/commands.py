@@ -1,5 +1,3 @@
-import pandas as pd
-import sqlite3
 import webbrowser as wb
 import pendulum
 import datetime

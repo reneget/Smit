@@ -1,7 +1,6 @@
 from tts import tts_func
 from stt import stt_funk
 from commands import *
-import pandas as pd
 from CSV import *
 
 while True:

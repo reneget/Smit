@@ -1,7 +1,5 @@
 import csv
 import sys
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import QObject, pyqtSignal, QThread
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
