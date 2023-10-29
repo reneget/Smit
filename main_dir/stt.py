@@ -14,9 +14,9 @@ def stt_funk():
         while True:
             data = stream.read(4000, exception_on_overflow=False)
             if (rec.AcceptWaveform(data)) and (len(data) > 0):
-                messange = json.loads(rec.Result())
-                if messange['text']:
-                    yield messange['text']
+                message = json.loads(rec.Result())
+                if message['text']:
+                    yield message['text']
 
     for text in RecSpeech():
         return text
