@@ -8,6 +8,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+status_exit = None
+status_voice = None
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -124,33 +126,43 @@ class Ui_MainWindow(object):
         self.checkBox_2.setText(_translate("MainWindow", "Голос Г.П."))
 
 
-        # вызов проверки чекбоксов
+        # вызов проверки чек-боксов
         self.com_exit_bot()
         self.com_voice()
 
 
 
-    # чекбокс вкл/выкл помощника в целом
+    # чек-бокс вкл/выкл помощника в целом
     def com_exit_bot(self):
         self.checkBox.clicked.connect(self.check_exit)
 
-    # чекбокс вкл/выкл озвучку помощника
+    # чек-бокс вкл/выкл озвучку помощника
     def com_voice(self):
         self.checkBox_2.clicked.connect(self.check_voice)
 
-    # проверка чекбокса помощника
+    # проверка чек-бокса помощника
     def check_exit(self):
+        global status_exit
         if (self.checkBox.isChecked()):
-            print('bot turn up')
+            print('bot вкл')
+            status_exit = True
+            return status_exit
         else:
-            print('bot turn down')
+            print('bot выкл')
+            status_exit = False
+            return status_exit
 
-    # проверка чекбокса на озвучку
+    # проверка чек-бокса на озвучку
     def check_voice(self):
+        global status_voice
         if (self.checkBox_2.isChecked()):
             print('voice вкл')
+            status_voice = True
+            return status_voice
         else:
             print('voice выкл')
+            status_voice = False
+            return status_voice
 
 
 
