@@ -39,3 +39,6 @@ while True:
 
             elif value == 'создай папку':
                 tts_func(folder())
+
+
+
