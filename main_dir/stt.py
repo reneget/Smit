@@ -21,5 +21,3 @@ def stt_funk():
     for text in RecSpeech():
         return text
 
-
-#test
