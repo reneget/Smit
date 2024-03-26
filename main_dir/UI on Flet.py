@@ -6,7 +6,7 @@ def ui_main(page):
     page.theme_mode = 'dark'
     page.vertical_alignment = ft.MainAxisAlignment.START
     page.window_width = 350
-    page.window_height = 400
+    page.window_height = 350
     page.window_resizable = False
 
     btn_add_command = ft.OutlinedButton(text='Добавить')
