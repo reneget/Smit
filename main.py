@@ -1,7 +1,8 @@
 from CSV import *
 from commands import *
 from stt import stt_funk
-from tts import tts_func
+# from tts import tts_func
+from tts_AI import ai_tts as tts_func
 
 while True:
     text = stt_funk()
