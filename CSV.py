@@ -1,6 +1,7 @@
 import csv
-import pandas as pd
 import os
+
+import pandas as pd
 
 csv_file = 'commands_data.csv'
 

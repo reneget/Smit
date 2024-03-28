@@ -1,8 +1,7 @@
-from tts import tts_func
-from stt import stt_funk
-from commands import *
 from CSV import *
-
+from commands import *
+from stt import stt_funk
+from tts import tts_func
 
 while True:
     text = stt_funk()
@@ -39,6 +38,3 @@ while True:
 
             elif value == 'создай папку':
                 tts_func(folder())
-
-
-

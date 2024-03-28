@@ -1,4 +1,5 @@
 import json
+
 import pyaudio
 from vosk import Model, KaldiRecognizer
 
@@ -10,7 +11,7 @@ stream.start_stream()
 
 
 def stt_funk():
-    def RecSpeech():
+    def rec_speech():
         while True:
             data = stream.read(4000, exception_on_overflow=False)
             if (rec.AcceptWaveform(data)) and (len(data) > 0):
@@ -18,6 +19,5 @@ def stt_funk():
                 if message['text']:
                     yield message['text']
 
-    for text in RecSpeech():
+    for text in rec_speech():
         return text
-

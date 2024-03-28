@@ -16,11 +16,9 @@ def ui_main(page):
         if btn_add_command:
             pass
 
-
     def change_theme(e):
         page.theme_mode = 'light' if page.theme_mode == 'dark' else 'dark'
         page.update()
-
 
     page.add(
         ft.Row(
@@ -47,8 +45,8 @@ def ui_main(page):
         )
     )
 
-ft.app(target=ui_main)
 
+ft.app(target=ui_main)
 
 # user_label = ft.Text('Текст')                                                       # текст
 # user_field = ft.TextField(value="0", width=150, text_align=ft.TextAlign.CENTER)     # поле ввода

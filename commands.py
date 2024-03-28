@@ -1,7 +1,8 @@
-import webbrowser as wb
-import pendulum
 import datetime
 import os
+import webbrowser as wb
+
+import pendulum
 from AppOpener import open
 
 
@@ -43,8 +44,8 @@ def start_app(name):  # открыть приложение
     open(name)
     return f'открывается приложение {name}'
 
-def folder():  # Создать папку на рабочем столе
-    os.chdir(os.path.expanduser('~') + r'\Desktop')    # Выбирает данную директорию, находит путь рабочего стола
-    if not os.path.isdir("Новая папка"):     # Возвращает True если нет данной дир. файла
-        os.mkdir("Новая папка")     # создает папку, если false то ничего он тебе не сделает
-    # Коммы оставил на случай фикса
+
+def folder():  # создать папку
+    os.chdir(os.path.expanduser('~') + r'\Desktop')
+    if not os.path.isdir("Новая папка"):
+        os.mkdir("Новая папка")
