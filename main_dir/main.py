@@ -15,7 +15,7 @@ while True:
             tts_func(f'Вы сказали, {command_text}, но в моём списке команд такой нет.')
         else:
             value = df.iloc[0, 2]
-            if value == 'открыть' or value == 'рыть':
+            if value == 'открой' or value == 'рой':
                 open_link(df.iloc[0, 3])
                 tts_func('Открываю вашу ссылку')
 

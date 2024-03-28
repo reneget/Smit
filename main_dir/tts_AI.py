@@ -1,25 +1,27 @@
-import requests
+from elevenlabs import Voice, VoiceSettings, play
+from elevenlabs.client import ElevenLabs
 
-CHUNK_SIZE = 1024
-url = "https://api.elevenlabs.io/v1/text-to-speech/<voice-id>"
+client = ElevenLabs(
+  api_key="78041bd5c835902c252e9252489cd8fe"
+)
 
-headers = {
-  "Accept": "audio/mpeg",
-  "Content-Type": "application/json",
-  "xi-api-key": "78041bd5c835902c252e9252489cd8fe"
-}
+audio = client.generate(
+    text="Hello!",
+    voice=Voice(
+        voice_id='EXAVITQu4vr4xnSDxMaL',
+        settings=VoiceSettings(stability=0.71, similarity_boost=0.5, style=0.0, use_speaker_boost=True)
+    )
+)
 
-data = {
-  "text": "Привет, я Смит",
-  "model_id": "eleven_monolingual_v1",
-  "voice_settings": {
-    "stability": 0.5,
-    "similarity_boost": 0.5
-  }
-}
+play(audio)
 
-response = requests.post(url, json=data, headers=headers)
-with open('output.mp3', 'wb') as f:
-    for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
-        if chunk:
-            f.write(chunk)
+client = ElevenLabs(
+  api_key="78041bd5c835902c252e9252489cd8fe"     # Defaults to ELEVEN_API_KEY
+)
+
+audio = client.generate(
+  text="Hello!",
+  voice="Rachel",
+  model="eleven_multilingual_v2"
+)
+play(audio)
