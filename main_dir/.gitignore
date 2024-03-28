@@ -1,6 +1,7 @@
-../.idea/
+.idea/
 vosk-model-ru-0.42/
 vosk-model-small-ru-0.22/
 commands_database.db/
 SQLite.py/
 mydata.csv/
+env/
