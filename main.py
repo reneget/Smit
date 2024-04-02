@@ -3,21 +3,23 @@ from commands import *
 from stt import stt_funk
 # from tts import tts_func
 from tts_AI import ai_tts as tts_func
+from mp3_play import play_mp3
 
 while True:
     text = stt_funk()
     if 'смит' in text:
-        tts_func('Слушаю вас')
+        # tts_func('Слушаю вас.')
+        play_mp3('Слушаю вас')
         command_text = stt_funk()
         df = pd.read_csv('commands_data.csv')
         df = df[df['user_title'] == command_text]
         if df.empty:
-            tts_func(f'Вы сказали, {command_text}, но в моём списке команд такой нет.')
+            tts_func(f'Хм-м, Вы сказали, {command_text}, но в моём списке команд такой нет...')
         else:
             value = df.iloc[0, 2]
-            if value == 'открой' or value == 'рой':
+            if value == 'открой' or value == 'рой' or value == 'ютуб':
                 open_link(df.iloc[0, 3])
-                tts_func('Открываю вашу ссылку')
+                play_mp3('Открываю вашу ссылку')
 
             elif value == 'узнать дату':
                 tts_func(date_now())

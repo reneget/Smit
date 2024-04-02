@@ -11,6 +11,8 @@ def ai_tts(text):
         text=text,
         voice="Bill",
         model="eleven_multilingual_v2",
-        voice_settings=VoiceSettings(stability=0.01, similarity_boost=1.0, style=0.0, use_speaker_boost=True)
+        voice_settings=VoiceSettings(stability=0.60, similarity_boost=0.6, style=0.3, use_speaker_boost=True)
     )
     play(audio)
+    print(text)
+
