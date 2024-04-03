@@ -4,6 +4,7 @@ from stt import stt_funk
 # from tts import tts_func
 from tts_AI import ai_tts as tts_func
 from mp3_play import play_mp3
+from YandexGPT import yandex_gpt
 
 while True:
     text = stt_funk()
@@ -14,12 +15,18 @@ while True:
         df = pd.read_csv('commands_data.csv')
         df = df[df['user_title'] == command_text]
         if df.empty:
-            tts_func(f'Хм-м, Вы сказали, {command_text}, но в моём списке команд такой нет...')
+            # tts_func(f'Хм-м, Вы сказали, {command_text}, но в моём списке команды такой нет...')
+            # play_mp3('команды нет')
+            tts_func(yandex_gpt(command_text))
+
         else:
             value = df.iloc[0, 2]
             if value == 'открой' or value == 'рой' or value == 'ютуб':
                 open_link(df.iloc[0, 3])
                 play_mp3('Открываю вашу ссылку')
+
+            elif value == 'привет' or value == 'пивет' or value == 'здравствуй':
+                play_mp3('Здравствуйте')
 
             elif value == 'узнать дату':
                 tts_func(date_now())
